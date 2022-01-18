@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录&注册 - 星际探寻</title>
+    <link rel="stylesheet" href="css/login.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+</head>
+<body>
+<div class="head-title">
+    <h2>星际探测</h2>
+</div>
+<div class="main-frm">
+    <div class="alert" th:style="${errorMessage} == null?'display:none':'display:block'" th:utext="${errorMessage}"></div>
+    <!-- 登录页面 -->
+    <div class="form-info" id="login-info" th:style="${myGoal=='login'} ?'display: block;':'display: none'">
+        <div class="form-title">登录</div>
+        <!-- 直接登录 -->
+        <form class="form-content" id="password-login-form" th:action="@{/LoginInPassword}" method="post">
+            <input type="text" placeholder="请输入邮箱" class="email" th:name="email"><div class="format-alert">*邮箱格式不正确</div>
+            <input type="password" placeholder="请输入密码" class="password" th:name="password"><div class="format-alert">*8-16位数字、字母、常用字符</div>
+            <div class="form-special">使用邮箱验证码登录</div>
+            <button class="form-button" type="submit">登录</button>
+        </form>
+        <!-- 通过验证码登录 -->
+        <form class="form-content" id="code-login-form" style="display: none" th:action="@{/LoginInEmailCode}" method="post">
+            <input type="text" placeholder="请输入邮箱" class="email" th:name="email2"><div class="format-alert">*邮箱格式不正确</div>
+            <div class="get-num">
+                <input type="text" placeholder="输入验证码" th:name="verCode1">
+                <button type='button'>获取验证码</button>
+            </div>
+            <div class="form-special">使用密码登录</div>
+            <button class="form-button" type="submit">登录</button>
+        </form>
+    </div>
+    <!-- 注册页面 -->
+    <div class="form-info" id="sign-up-info" th:style="${myGoal=='signUp'} ?'display: block;':'display: none'">
+        <div class="form-title">注册</div>
+        <form class="form-content" id="sign-up-form" th:action="@{SignUpAction}" method="post">
+            <input type="text" placeholder="请输入邮箱" class="email" th:name="email3"><div class="format-alert">*邮箱格式不正确</div>
+            <input type="password" placeholder="8-16位数字、字母、常用字符" class="password" th:name="password1"><div class="format-alert">*8-16位数字、字母、常用字符</div>
+            <input type="password" placeholder="确认密码" class="password2" th:name="password2"><div class="format-alert">*两次密码不一致</div>
+            <div class="get-num">
+                <input type="text" placeholder="输入验证码" th:name="verCode2">
+                <button type='button'>获取验证码</button>
+            </div>
+            <button class="form-button" type="submit">注册</button>
+        </form>
+    </div>
+    <!-- 切换按钮 -->
+    <div class="selection">
+        <span class="login-select" th:classappend="${myGoal=='login'} ?'active':''">登录</span>
+        <div class="sep">.</div>
+        <span class="sign-up-select" th:classappend="${myGoal=='signUp'} ?'active':''">注册</span>
+    </div>
+</div>
+<!-- 页脚 -->
+<div class="footer">
+    @2021-12-01
+</div>
+</body>
+</html>

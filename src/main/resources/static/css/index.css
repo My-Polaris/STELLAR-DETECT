@@ -1,0 +1,469 @@
+* {
+    margin: 0px;
+    height: 0px;
+    /* 控制页面的文字无法被选中 */
+    user-select: none;
+    /* 默认字体,这个字体是系统带的,一定有*/
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+ul,li,ol {
+    display: block;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+a,a:hover{
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+.mainHeader,#menu{
+    opacity: 0;
+    animation: Section1-fadeIn 1s 1.4s 1;
+    /* 当动画完成后，保持最后一个属性值(在最后一个关键帧中定义) */
+    animation-fill-mode: forwards;
+}
+.section1 .downloadContent,.scrollTips,.section1 .title{
+    opacity: 0;
+    animation: Section1-fadeIn 1s 0.9s 1;
+    /* 当动画完成后，保持最后一个属性值(在最后一个关键帧中定义) */
+    animation-fill-mode: forwards;
+}
+@keyframes Section1-fadeIn{
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+/* 动态背景 */
+#v1{
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+    height: 100%;
+    width: 100%;
+    /* 填满画布 */
+    object-fit: fill;
+    z-index: -99;
+    /*背景模糊设置*/
+    /* filter: blur(15px); */
+    /* 灰度设置 */
+    /* -webkit-filter: grayscale(100%); */
+    /* filter: grayscale(100%); */
+}
+/* 导航栏样式 */
+#menu {
+    display: block;
+    position: fixed;
+    right: 5%;
+    margin: auto;
+    top:0;
+    bottom: 0;
+    z-index: 70;
+    height: 300px;
+    width: 3.2rem;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "SansRegular";
+    /* background-color: #666; */
+}
+#menu li {
+    display: block;
+    position: relative;
+    height: 70px;
+    width: 100%;
+    line-height: 20px;
+    padding: 40px 0px;
+}
+#menu li a {
+    display: block;
+    height: 20px;
+    text-align: center;
+}
+#menu .active a{
+    color: #393e46;
+    border-right: solid 5px #393e46;
+}
+/* 头界面 */
+.mainHeader{
+    position: fixed;
+    top: 3rem;
+    right: 9rem;
+    height: 3rem;
+    width: 10rem;
+    z-index: 30;
+    /* color: #c9cbd0; */
+    color: #fff;
+    font-size: 1.2em;
+    font-family: "SansMedium";
+}
+.headerUser{
+    width: 100%;
+    font-size: 1rem;
+}
+.mainHeader .headerUser .sep {
+    margin: 0 0.8rem;
+}
+/* 加载动画 */
+.loading {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    background: #ffffff;
+}
+
+.loading .pic {
+    width: 100px;
+    height: 100px;
+    /* background: url(images/loading.gif); */
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    /* border: 1px solid red; */
+    font-size: 30px;
+    text-align: center;
+    line-height: 100px;
+}
+
+.loading .pic span{
+    display: block;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top:10px;
+    left: 10px;
+    border-radius: 50%;
+    box-shadow: 0px 3px 4px #393e46;
+    animation: rotate 1s infinite linear;
+}
+@keyframes rotate{
+    0%{transform: rotate(0deg);}
+    100%{transform: rotate(360deg);}
+}
+/* 第一屏 */
+.section1 {
+    margin-left: 3.875rem;
+}
+.section1 .title {
+    margin: 1.75rem 2.5rem 0 0;
+    width: 12.125rem;
+    height: auto;
+}
+.section1 .title img {
+    width: 100%;
+    height: 100%;
+}
+.section1 .nameContent {
+    margin: 6.75rem 2.5rem 0 0;
+    width: 32.75rem;
+    height: auto;
+    overflow: hidden;
+}
+.section1 .nameContent img {
+    opacity: 0;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    animation: Name-SlideOut 0.6s linear 0.2s 1;
+    animation-fill-mode: forwards;
+}
+@keyframes Name-SlideOut {
+    from{bottom: -100px;}
+    to{bottom: -40px;opacity: 1;}
+}
+.scrollTips {
+    position: fixed;
+    left: 50%;
+    bottom: 2rem;
+    height: 3.2rem;
+    transform: translateX(-50%);
+    opacity: 0;
+    /* background-color: brown; */
+}
+.scrollTips .scrollTipsText {
+    position: relative;
+    color: #fff;
+    font-size: 1em;
+    font-family: "Geometos";
+    font-weight: bold;
+}
+.scrollTips .scrollTipsArrow {
+    display: block;
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-right: 2px solid #ababab;
+    border-bottom: 2px solid #ababab;
+    transform: translateX(-50%) rotate(45deg);
+}
+.scrollTips .scrollTipsArrow:first-of-type{
+    bottom: 1.5rem;
+    animation: ScrollTips_Animate 2s infinite;
+}
+.scrollTips .scrollTipsArrow:last-of-type{
+    bottom: 1rem;
+    animation: ScrollTips_Animate 2s 0.2s infinite;
+}
+@keyframes ScrollTips_Animate {
+    from{border-color: #fff;}
+    to{border-color: #ababab;}
+}
+.section1 .downloadContent {
+    position: absolute;
+    left: 1.5rem;
+    bottom: 4rem;
+    /* margin: 8.75rem 1.5rem 0; */
+    width: 30rem;
+    height: 9rem;
+    /* background-color: #393e46; */
+    display: flex;
+}
+.section1 .downloadContent .downloadCode {
+    display: block;
+    /* position: relative;
+    top: 10%; */
+    background: url(../images/downloadCode.png) no-repeat;
+    background-size: auto 80%;
+    height: 100%;
+    width: 35%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.section1 .downloadContent .downloadCode span {
+    font-size: 0.7em;
+    /* flex-grow: 1; */
+    font-family: "SansMedium";
+    width: 90%;
+    text-align: justify;
+    text-align-last: justify;
+    display: block;
+    height: 1rem;
+}
+.section1 .downloadContent .downloadDetail {
+    height: 100%;
+    width: 35%;
+    padding: 10px;
+}
+.section1 .downloadContent .downloadDetail .downloadDeatilItem {
+    display: block;
+    position: relative;
+    height: 30%;
+    width: 85%;
+    border-radius: 8px;
+    margin-top:5px;
+}
+.ios{
+    background-image: url(../images/ios-download.png);
+    background-position-y: -3px;
+    background-size: 100% auto;
+}
+.android{
+    background-image: url(../images/android-download.png);
+    background-position-y: 0px;
+    background-size: 100% auto;
+}
+.taptap{
+    background-image: url(../images/taptap-download.png);
+    background-position-y: 2px;
+    background-size: 100% auto;
+}
+.section1 .downloadContent .downloadAgeTips{
+    display: block;
+    margin-top: 10px;
+    width: 7.5rem;
+    height: 9rem;
+    background-size: 85% auto;
+    background-image: url(../images/ageTips.png);
+    background-repeat: no-repeat;
+}
+/* 第二屏 */
+.noticeDisplay {
+    width: 44.25rem;;
+    height: 44rem;
+    padding: 2.5rem 0;
+    /* background-color: #393e46; */
+    display: flex;
+    flex-direction: column;
+}
+.articleCategory{
+    height: 3.25rem;
+    /* margin-left: 5.875rem; */
+    font-size: 1.2rem;
+    font-family: "SansMedium";
+    font-weight: bold;
+}
+.articleCategoryList {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.articleCategoryItem{
+    height: 50%;
+    text-align: center;
+    color: #fff;
+    display: inline-block;
+    padding: 0 0.5rem;
+    margin: 0 0.75rem;
+    position: relative;
+    cursor: pointer;
+    /* transition: color 0.3s, background-color 0.3s; */
+}
+.articleCategoryList .active {
+    color: #393e46;
+}
+.articleCategory .articleCategoryItem::before {
+    content: "·";
+    display: block;
+    position: absolute;
+    color: rgb(255, 255, 255);
+    left: -0.75rem;
+    transform: translateX(-50%);
+}
+.infomationBanner {
+    width: 100%;
+    height: 250px;
+    padding-top: 30px;
+    padding-left: 5.4rem;
+}
+.swiper {
+    width: 624px;
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+}
+.img-container {
+    /* 4*img.width */
+    width: 2496px;
+    height: 220px;
+    position: absolute;
+    /* z-index:-1; */
+}
+.img-slide{
+    float: left;
+    width: 624px;
+    height: 220px;
+}
+.img-container img {
+    /* width: 624px;
+    height: auto;
+    overflow: hidden; */
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+.swiper-index {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 200px;
+    height: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.swiper-index .index-item {
+    width: 35px;
+    height: 4px;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+.swiper-index .active {
+    background-color: #22bbff;
+}
+.articleContainer {
+    position: relative;
+    margin-top: 0.7rem;
+    width: 100%;
+    height: 280px;
+    /* background-color: #00adb5; */
+}
+.articleList {
+    display: block;
+}
+.articleItem {
+    display: block;
+    height: 2.5rem;
+    border-bottom: 1px solid #ababab;
+    padding-left: 5.6rem;
+    padding-top: 0.5rem;
+    color: #fff;
+    font-size: 0.9rem;
+}
+.article-content {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    transition: all 300ms;
+}
+.article-content:hover {
+    transform: translate(50px,0px);
+    transition: all 300ms;
+}
+.noticeDate {
+    font-family: "Bender";
+    color: #fff;
+    font-size: 0.875rem;
+    width: 6em;
+    text-align: center;
+    white-space: nowrap;
+}
+.noticeType {
+    font-family: "SansMedium";
+    color: #22bbff;
+    font-size: 1rem;
+    margin-left: 2.25rem;
+}
+.noticeContent {
+    font-family: sans-serif;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: normal;
+    margin: 0;
+    margin-left: 0.75rem;
+}
+.articlePageChange{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    /* border: 1px solid black; */
+}
+.pagination {
+    display: flex;
+    height: 100%;
+    justify-content:flex-start;
+    align-items: center;
+    font-size: 15px;
+}
+.pagination li {
+    display: block;
+    width: 40px;
+    height: 30px;
+}
+.pagination li a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #393e46;
+    color: #ababab;
+}
+.pagination .active a{
+    color: #fff;
+}
+.pagination li a:hover {
+    background-color: #22bbff;
+}

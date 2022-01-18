@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心 - 星际探测</title>
+    <link rel="stylesheet" href="./css/myInfo.css">
+</head>
+<body>
+<div class="head-title">
+    <h2>星际探测</h2>
+</div>
+<div class="main-frm">
+    <div class="form-item">
+        <div class="form-title">账号信息</div>
+        <div class="form-content">
+            <div class="info-item">
+                <div class="info-title">绑定邮箱</div>
+                <div class="info-content" th:utext="${email}"></div>
+            </div>
+            <div class="info-item">
+                <div class="info-title">账号角色信息-昵称</div>
+                <div class="info-content" th:utext="${roleName}"></div>
+            </div>
+            <div class="info-item">
+                <div class="info-title">账号角色信息-UID</div>
+                <div class="info-content" th:utext="${roleUid}"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 页脚 -->
+<div class="footer">
+    @2021-12-01
+</div>
+</body>
+</html>

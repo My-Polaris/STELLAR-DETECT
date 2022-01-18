@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>星际探测</title>
+    <!-- fullPage插件的css引入 -->
+    <link rel="stylesheet" href="css/jquery.fullPage.css">
+    <!-- 引入这个页面的css样式表 -->
+    <link rel="stylesheet" href="css/index.css">
+
+    <!-- jQuery引入 -->
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <!-- jquery.easings.min.js 用于 easing 参数，也可以使用完整的 jQuery UI 代替，如果不需要设置 easing 参数，可去掉该文件 -->
+    <script src="js/jquery.easing.min.js"></script>
+    <!-- 如果 scrollOverflow 设置为 true，则需要引入 jquery.slimscroll.min.js，一般情况下不需要 -->
+    <script src="js/jquery.slimscroll.min.js"></script>
+    <!-- fullPage插件的js引入 -->
+    <script src="js/jquery.fullPage.js"></script>
+    <!-- 引入这个页面的js表 -->
+    <script type="text/javascript" src="js/index.js"></script>
+</head>
+
+<body>
+<!-- 加载动画 -->
+<div class="loading">
+    <div class="pic">
+        <span></span>
+        <b>0%</b>
+    </div>
+</div>
+<!-- 动态背景:自动播放,循环,无声 -->
+<video id="v1" autoplay loop muted>
+    <source src="./images/index_bg.mp4" type="video/mp4" />
+</video>
+<script>loading(25);</script>
+<!-- 登陆/注册 || 个人中心/登出 -->
+<div class="mainHeader">
+    <div class="headerUser">
+        <a class="headerUserButton" id="userLogin" th:href="@{/Login}" th:if="!${ifLogin}">登录</a>
+        <a class="headerUserButton" id="userCenter" th:href="@{/MyInfo}" th:if="${ifLogin}">个人中心</a>
+        <span class="sep">|</span>
+        <a class="headerUserButton" id="userRegister" th:href="@{/SignUp}" th:if="!${ifLogin}">注册</a>
+        <a class="headerUserButton" id="userLogout" th:href="@{/SignOut}" th:if="${ifLogin}">登出</a>
+    </div>
+</div>
+<!-- 导航栏 -->
+<ul id="menu">
+    <li data-menuanchor="page1" class="active"><a href="#page1">首页</a></li>
+    <li data-menuanchor="page2"><a href="#page2">情报</a></li>
+    <li data-menuanchor="page3"><a href="#page3">档案</a></li>
+    <li data-menuanchor="page4"><a href="#page4">设定</a></li>
+</ul>
+<script>loading(50);</script>
+<!-- 提示下滑图标 -->
+<div class="scrollTips">
+    <div class="scrollTipsText">SCROLL </div>
+    <span class="scrollTipsArrow"></span>
+    <span class="scrollTipsArrow"></span>
+</div>
+<!-- 主页面 -->
+<div id="dowebok">
+    <div class="section section1 fp-auto-height">
+        <div class="title">
+            <img src="./images/logo.png" class="logo" />
+        </div>
+        <div class="nameContent">
+            <img src="./images/name.png">
+        </div>
+        <div class="downloadContent">
+            <a href="javascript:;" class="downloadCode">
+                <span>扫码<b>下载</b></span>
+            </a>
+            <div class="downloadDetail">
+                <a href="javascript:;" class="downloadDeatilItem ios"></a>
+                <a href="javascript:;" class="downloadDeatilItem android"></a>
+                <a href="javascript:;" class="downloadDeatilItem taptap"></a>
+            </div>
+            <div class="downloadAgeTips">
+                <a href="javascript:;" class="ageTipsLink"></a>
+            </div>
+        </div>
+    </div>
+    <div class="section section2">
+        <div class="noticeDisplay">
+            <div class="articleCategory">
+                <ol class="articleCategoryList">
+                    <li class="articleCategoryItem active">最新</li>
+                    <li class="articleCategoryItem">公告</li>
+                    <li class="articleCategoryItem">活动</li>
+                    <li class="articleCategoryItem">新闻</li>
+                </ol>
+            </div>
+            <div class="infomationBanner">
+                <div class="swiper">
+                    <div class="img-container">
+                        <a class="img-slide"><img src="./images/swiper1.jpg" alt=""></a>
+                        <a class="img-slide"><img src="./images/swiper2.jpg" alt=""></a>
+                        <a class="img-slide"><img src="./images/swiper3.png" alt=""></a>
+                        <a class="img-slide"><img src="./images/swiper4.png" alt=""></a>
+                    </div>
+                    <ul class="swiper-index">
+                        <li class="index-item active"></li>
+                        <li class="index-item"></li>
+                        <li class="index-item"></li>
+                        <li class="index-item"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="articleContainer">
+                <div th:utext="${postList.totalElements}" id="postListInfo" style="display: none"></div>
+                <div class="articleList">
+                    <a class="articleItem" th:each="poster : ${postList}" href="https://ak.hypergryph.com/news/2021120792.html">
+                        <div class="article-content">
+                            <span class="noticeDate" th:utext="${poster.createDate}">2021-12-14</span>
+                            <span class="noticeType" th:utext="${poster.postType}">活动</span>
+                            <span class="noticeContent" th:utext="${poster.postTitle}"> [活动预告]SideStory「风雪过境」暨跨年纪念活动即将开启</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="articlePageChange">
+                    <ul id="pageInfo" class="pagination">
+                        <li><a href="#">&laquo;</a></li>
+                        <li  class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="slide">第三屏的第一屏</div>
+        <div class="slide">第三屏的第二屏</div>
+        <div class="slide">第三屏的第三屏</div>
+        <div class="slide">第三屏的第四屏</div>
+    </div>
+    <div class="section">第四屏</div>
+</div>
+<script>
+    loading(100);
+    $(".loading").fadeOut();
+</script>
+</body>
+
+</html>
