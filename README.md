@@ -10,7 +10,7 @@
 
 ### 首页：
 
-<img src="\src\main\resources\static\images\result-index1.png" style="zoom:40%;" />
+<img src="src\main\resources\static\images\result-index1.png" style="zoom:40%;" />
 
 **开局加载**：进入网站时会加载进度条，页面加载完成后才正式进入。
 
@@ -24,7 +24,7 @@
 
 ### 登录/注册页：
 
-<img src="D:\IDEA\my-work\SpringBootProject\src\main\resources\static\images\result-login.png" style="zoom:40%;" />
+<img src="src\main\resources\static\images\result-login.png" style="zoom:40%;" />
 
 ### 数据库设计：
 
@@ -32,6 +32,6 @@
 
 ### 功能设计：
 
-<img src="D:\IDEA\my-work\SpringBootProject\src\main\resources\static\images\function_design.png" alt="function_design" style="zoom:40%;" />
+<img src="src\main\resources\static\images\function_design.png" alt="function_design" style="zoom:40%;" />
 
 总结来说是一个Spring Boot的小项目，该项目的功能并不多，主要还是以介绍游戏，展示游戏特性、游戏公告为主。
