@@ -4,9 +4,9 @@
 
 由于游戏的设定并未完全确定,所以只实作用户相关与公告相关的一些功能。
 
-在技术栈上，前端的页面由前端三剑客搭建，一些交互动作与动画效果则由jQuery补充完成，AJAX负责异步发送请求至后端，同时接收相应的数据显示到页面上；后端框架使用的是Spring Boot框架。
+在技术栈上，前端的页面由前端三剑客搭建，一些交互动作与动画效果则由jQuery补充完成，AJAX负责异步发送请求至后端，同时接收相应的数据显示到页面上；后端使用的是Spring Boot框架。
 
-前端由Thymeleaf渲染H5页面，其中CSS与JS都与templates的html分开存放，后端控制以Controller->Service->JpaReporitory的框架搭建。
+前端由Thymeleaf渲染H5页面，其中CSS与JS都与templates的html文件分开放置，后端控制以Controller->Service->JpaReporitory的框架搭建。
 
 ### 首页：
 
@@ -16,7 +16,7 @@
 
 **整屏滑动**：页面以整屏滑动，会有相应的提示滑动信息，也可以点击导航栏实现滑动。
 
-> 此处用到了fullPage全屏滚动插件，fullPage.js 是一个基于 jQuery 的插件，它能够很方便、很轻松的制作出全屏网站。
+> 此处用到了fullPage全屏滚动插件，fullPage.js 是一个基于 jQuery 的插件，它能够方便的制作出全屏网站。
 
 ### 公告页：
 
